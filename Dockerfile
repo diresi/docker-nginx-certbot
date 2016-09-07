@@ -4,6 +4,8 @@ RUN apk update \
     && apk add --no-progress \
             certbot openssl  \
     && rm /var/cache/apk/* \
+    && echo "preparing certbot webroot" \
+    && mkdir -p /var/lib/certbot \
     && echo "generating initial self-signed certificate" \
     && mkdir -p /etc/letsencrypt/live/rissner.net \
     && openssl req -x509 -nodes -newkey rsa:4096 \
