@@ -20,7 +20,7 @@ This image uses these services you must accept their terms of service.
 
 Right now, I cannot find an URL to point you there, but be sure to check them out.
 
-When installing the initial certificate, certbot will ask you to accept the TOS (so run it interactive). Or you can set the `TOS=--accept-tos` environment variable in `.env`.
+When installing the initial certificate, certbot will ask you to accept the TOS (so run it interactive). Or you can set the `TOS=--agree-tos` environment variable in `.env`.
 
 # Get your initial certificate
 
