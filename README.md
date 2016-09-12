@@ -10,18 +10,16 @@ Connect your HTTP containers to the `<prefix>_default` network, map the alias fo
 - docker >= 1.19
 - docker-compose >= 1.8
 
-# TOS
-
 # Installation
 - clone this repo
 - edit `.env` and set your `EMAIL` and `DOMAINS` variables
 
 The `DOMAINS` variable is expanded using bash, any whitespace is replaced with commas. This way you can define a bunch of subdomains at once.
 
-# Terms of service
+# certbot terms of service
 
 `certbot` is a frontend to handle [letsencrypt](https://letsencrypt.org/) SSL certificates.
-This image uses these services you must accept their terms of service.
+This image uses these services and you must accept their terms of service.
 
 Right now, I cannot find an URL to point you there, but be sure to check them out.
 
