@@ -20,7 +20,7 @@ The `DOMAINS` variable is expanded using bash, any whitespace is replaced with c
 # certbot terms of service
 
 `certbot` is a frontend to handle [letsencrypt](https://letsencrypt.org/) SSL certificates.
-This image uses these services you must accept their terms of service.
+This image uses these services and you must accept their terms of service.
 
 Right now, I cannot find an URL to point you there, but be sure to check them out.
 
