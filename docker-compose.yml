@@ -1,7 +1,4 @@
 version: '2'
-networks:
-    public:
-    upstream:
 services:
     nginx:
         build: .
@@ -9,9 +6,6 @@ services:
             - "80:80"
             - "443:443"
         env_file: .env
-        networks:
-            - public
-            - upstream
         volumes:
             # we need a couple of mounts since certbot uses symlinks for those files
             - ./cert/live:/etc/letsencrypt/live
