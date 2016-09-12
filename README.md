@@ -1,6 +1,8 @@
 # docker-nginx-certbot
 nginx in docker doing SSL termination with certbot
 
+This nginx instance forwards all requests to upstreams on the same docker network.
+
 # Requirements
 - docker >= 1.19
 - docker-compose >= 1.8
