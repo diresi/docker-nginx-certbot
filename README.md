@@ -1,7 +1,11 @@
 # docker-nginx-certbot
 nginx in docker doing SSL termination with certbot
 
-This nginx instance forwards all requests to upstreams on the same docker network.
+This nginx instance forwards all requests to upstreams on the same docker networks.
+The container binds to the networks `<prefix>_public` and `<prefix>_upstream`.
+
+Connect your HTTP containers to the `..._upstream` network, map the alias for the given
+`Host` header to a container and you are good to go.
 
 # Requirements
 - docker >= 1.19
@@ -42,3 +46,11 @@ Run `certbot.sh` in the docker container. It'll see the existing certificate and
     docker-compose exec nginx /etc/letsencrypt/certbot.sh -v
     
 Put this line in your docker-host crontab and run it every month or so.
+
+# Keeping and sharing your certificate
+
+SSL related files are placed in `/etc/letsencrypt/live/<firstdomain>/`. This
+directory is recreated with the container, unless you choose to make a volume
+and keep this volume.
+
+Edit `docker-compose.yml` and uncomment the lines in the `volumes` section.
