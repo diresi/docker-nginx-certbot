@@ -25,11 +25,16 @@ Right now, I cannot find an URL to point you there, but be sure to check them ou
 
 When installing the initial certificate, certbot will ask you to accept the TOS (so run it interactive). Or you can set the `TOS=--agree-tos` environment variable in `.env`.
 
+# Rate limits
+
+Be sure to read https://certbot.eff.org/faq/#what-are-the-current-rate-limits
+before starting experiments with this image.
+
 # Get your initial certificate
 
 Run `certbot.sh` in the docker container. It'll see that it didn't fetch any certifcates yet and run the inital setup.
 
-    docker-compose exec nginx /etc/letsencrypt/certbot.sh -v
+    docker-compose exec nginx /etc/nginx/ssl/certbot.sh -v
     
 If you haven't set the `TOS` environment variable `certbot` will ask you to accept their TOS, so be sure to run this command from an interactive shell.
 
@@ -40,7 +45,7 @@ The procedure is the same as for the inital step.
 
 Run `certbot.sh` in the docker container. It'll see the existing certificate and run the updater.
 
-    docker-compose exec nginx /etc/letsencrypt/certbot.sh -v
+    docker-compose exec nginx /etc/nginx/ssl/certbot.sh -v
     
 Put this line in your docker-host crontab and run it every month or so.
 
@@ -50,7 +55,7 @@ SSL related files are placed in `/etc/letsencrypt/live/<firstdomain>/`. This
 directory is recreated with the container, unless you choose to make a volume
 and keep this volume.
 
-The `docker-compose.yml` is configured to mount a local `./cert` directory that
-will be populated with the `live` and `archive` directories of `certbot`.
+The `docker-compose.yml` is configured to mount a local `./letsencrypt` directory that
+will be populated with all the certbot data.
 
 Edit the `volumes` section `docker-compose.yml` to adapt this to your needs.

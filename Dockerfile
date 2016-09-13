@@ -7,12 +7,12 @@ RUN apk update \
     && echo "preparing certbot webroot" \
     && mkdir -p /var/lib/certbot \
     && echo "generating initial self-signed certificate" \
-    && mkdir -p /etc/letsencrypt/example.net/ \
+    && mkdir -p /etc/nginx/ssl/example.net/ \
     && openssl req -x509 -nodes -newkey rsa:4096 \
-           -keyout /etc/letsencrypt/example.net/privkey.pem \
-           -out /etc/letsencrypt/example.net/fullchain.pem \
+           -keyout /etc/nginx/ssl/example.net/privkey.pem \
+           -out /etc/nginx/ssl/example.net/cert.pem \
            -subj "/C=/ST=/L=/O=/CN=example.net" \
-    && ln -sf /etc/letsencrypt/example.net /etc/letsencrypt/latest
+    && ln -sf /etc/nginx/ssl/example.net /etc/nginx/ssl/latest
 
 COPY default.conf /etc/nginx/conf.d/default.conf
-COPY certbot.sh /etc/letsencrypt/certbot.sh
+COPY certbot.sh /etc/nginx/ssl/

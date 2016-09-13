@@ -7,6 +7,4 @@ services:
             - "443:443"
         env_file: .env
         volumes:
-            # we need a couple of mounts since certbot uses symlinks for those files
-            - ./cert/live:/etc/letsencrypt/live
-            - ./cert/archive:/etc/letsencrypt/archive
+            - ./letsencrypt:/etc/letsencrypt

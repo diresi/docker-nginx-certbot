@@ -8,6 +8,7 @@ BASEDIR=${BASEDIR:-/etc/letsencrypt}
 LIVEDIR=${LIVEDIR:-${BASEDIR}/live}
 
 CERTBOT="/usr/bin/certbot --text --webroot -w /var/lib/certbot/"
+SYMLINK=/etc/nginx/ssl/latest
 
 function fail ()
 {
@@ -55,8 +56,8 @@ function install_link ()
 {
     LATEST=$(ls -td1 ${LIVEDIR}/* | head -n1)
     log "Using live directory: ${LATEST}"
-    rm -f ${BASEDIR}/latest
-    ln -sf ${LATEST} ${BASEDIR}/latest
+    rm -f ${SYMLINK}
+    ln -sf ${LATEST} ${SYMLINK}
 }
 
 function certbot_init ()
@@ -78,7 +79,7 @@ function certbot_renew ()
 }
 function certbot ()
 {
-    [ -d ${BASEDIR}/accounts ] && certbot_renew || certbot_init
+    [ -d ${LIVEDIR} ] && certbot_renew || certbot_init
 }
 
 function reload_nginx ()
