@@ -10,7 +10,7 @@ RUN apk update \
     && mkdir -p /etc/nginx/ssl/example.net/ \
     && openssl req -x509 -nodes -newkey rsa:4096 \
            -keyout /etc/nginx/ssl/example.net/privkey.pem \
-           -out /etc/nginx/ssl/example.net/cert.pem \
+           -out /etc/nginx/ssl/example.net/fullchain.pem \
            -subj "/C=/ST=/L=/O=/CN=example.net" \
     && ln -sf /etc/nginx/ssl/example.net /etc/nginx/ssl/latest
 
