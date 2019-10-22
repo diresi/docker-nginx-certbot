@@ -1,3 +1,8 @@
+# Deprecation notice
+
+I'm not using this image anymore, I switched to https://github.com/diresi/nginx-le
+
+
 # docker-nginx-certbot
 nginx in docker doing SSL termination with certbot
 
